@@ -15,7 +15,28 @@
     font-family: SVN-Poppins;
 }
 
-::-webkit-scrollbar {
+
+.slick-slider {
+    width: 88%;
+    margin: auto;
+  }
+
+
+
+  .slick-prev, 
+  .slick-next {
+      background: #db7093 !important;
+      z-index: 100;
+      
+      outline: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.3);
+      background-size: 100%, 100%;
+      border-radius: 50%;
+      margin-top:-40px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+ */
+ ::-webkit-scrollbar {
     width: 10px;
 }
 
@@ -37,23 +58,3 @@
  ::-webkit-scrollbar-thumb:hover {
     background: pink;
 }
-.slick-slider {
-    width: 88%;
-    margin: auto;
-  }
-
-
-
-  .slick-prev, 
-  .slick-next {
-      background: #db7093 !important;
-      z-index: 100;
-      
-      outline: rgba(0, 0, 0, 0.3);
-      background-color: rgba(0, 0, 0, 0.3);
-      background-size: 100%, 100%;
-      border-radius: 50%;
-      margin-top:-40px;
-      border: 1px solid rgba(0, 0, 0, 0.2);
-  }
- */
