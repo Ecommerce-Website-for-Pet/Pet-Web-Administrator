@@ -46,17 +46,60 @@
                 <form #productForm="ngForm" (ngSubmit)="submitData(productForm)">
 
                     <h4 class="text-center">Update Product Info</h4>
-
                     <input type="hidden" name="_id" 
                         [(ngModel)]="product['_id']">
+                    
                     <div class="mb-3">
                         <label for="name">Name: </label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter product name" 
                         [(ngModel)]="product['name']">
                     </div>
                     <div class="mb-3">
+                        <label for="category">Category: </label>
+                        <input type="text" class="form-control" id="category" name="category" placeholder="Enter category" 
+                        [(ngModel)]="product['category']">
+                    </div>
+                    <div class="mb-3">
+                        <label for="label">Label: </label>
+                        <input type="text" class="form-control" id="label" name="label" placeholder="Enter label" 
+                        [(ngModel)]="product['label']">
+                    </div>
+                    <div class="mb-3">
+                        <label for="image">Image: </label>
+                        <!-- <input type="text" class="form-control" id="image" name="image" placeholder="Enter image" 
+                        [(ngModel)]="product['image']"> -->
+                    </div>
+                    <div class="mb-3">
+                        <input type="file" class="form-control" (change)="onChange($event)">
+                    </div>
+                    <div class="mb-3">
+                        <label for="weight">Weight: </label>
+                        <input type="text" class="form-control" id="weight" name="weight" placeholder="Enter weight" 
+                        [(ngModel)]="product['weight']">
+                    </div>
+                    <div class="mb-3">
+                        <label for="color">Color: </label>
+                        <input type="text" class="form-control" id="color" name="color" placeholder="Enter color" 
+                        [(ngModel)]="product['color']">
+                    </div>
+                    <div class="mb-3">
                         <label for="price">Price: </label>
                         <input type="number" name="price" class="form-control" id="price" [(ngModel)]="product.price">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description">Description: </label>
+                        <input type="text" class="form-control" id="description" name="description" placeholder="Enter description" 
+                        [(ngModel)]="product['description']">
+                    </div>
+                    <div class="mb-3">
+                        <label for="benefit">Benefit: </label>
+                        <input type="text" class="form-control" id="benefit" name="benefit" placeholder="Enter benefit" 
+                        [(ngModel)]="product['benefit']">
+                    </div>
+                    <div class="mb-3">
+                        <label for="instruction">Instruction: </label>
+                        <input type="text" class="form-control" id="instruction" name="instruction" placeholder="Enter instruction" 
+                        [(ngModel)]="product['instruction']">
                     </div>
 
                     <div class="mb-3 text-end">
@@ -74,7 +117,15 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <!-- <th>Category</th>
+                        <th>Label</th> -->
+                        <th>Image</th>
+                        <!-- <th>Weight</th>
+                        <th>Color</th>
                         <th>Price</th>
+                        <th>Description</th>
+                        <th>Benefit</th>
+                        <th>Instruction</th> -->
                         <th></th>
                     </tr>
                 </thead>
@@ -82,7 +133,16 @@
                     <tr *ngFor="let p of products; let i = index">
                         <td>{{i+1}}</td>
                         <td>{{p.name}}</td>
+                        <!-- <td>{{p.category}}</td>
+                        <td>{{p.label}}</td> -->
+                        <!-- <td>{{p.image}}</td> -->
+                        <td><img style="height:50px; width:50px" src="{{p.image}}"></td>
+                        <!-- <td>{{p.weight}}</td>
+                        <td>{{p.color}}</td>
                         <td>{{p.price}}</td>
+                        <td>{{p.description}}</td>
+                        <td>{{p.benefit}}</td>
+                        <td>{{p.instruction}}</td> -->
                         <td>
                             <!-- <i class="bi bi-pencil">Edit</i> -->
                             <!-- <i class="bi bi-trash ms-2">Del</i> -->

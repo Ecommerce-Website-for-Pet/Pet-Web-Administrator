@@ -25,7 +25,13 @@ export class ManageProductsComponent implements OnInit {
 products: any;
   errMessage: string="";
   product:Product = new Product();
-  constructor(private _service: ExampleService, private _toast:ToastrService) { }
+  file:any = null;
+  public formUpload = this._formBuilder.group({
+    name:['',Validators.compose([Validators.required,Validators.minLength(3)])],
+    //name:['',[Validators.required,Validators.minLength(3)]],
+    file:['']
+  })
+  constructor(private _formBuilder: FormBuilder, private _service: ExampleService, private _toast:ToastrService) { }
 
   ngOnInit(): void {
 	// //   this._service.getAllProducts().subscribe({
@@ -37,6 +43,14 @@ products: any;
     next: data =>this.products = data,
     error: err => this.errMessage = err
   })
+  }
+  onChange(event:any){
+    if(event.target.files.length>0){
+      this.file=event.target.files[0];
+      /* console.log("File info: ",event.target.files[0]) */
+    }else{
+      this.file=null;
+    }
   }
 //   getData(){
 // 	    this._service.getAllProducts().subscribe({
