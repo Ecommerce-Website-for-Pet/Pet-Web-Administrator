@@ -1,1 +1,32 @@
-<p>manage-customer-accounts works!</p>
+<div class="productList col-md-7">
+    <h5 class="text-center bg-light text-dark">User Account List</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Email</th>
+                <th>Họ và Tên</th>
+                <th>Địa chỉ</th>
+                <th>SĐT</th>
+           
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of users; let i = index">
+                <td id="stt">{{i+1}}</td>
+                <td id="pEmail">{{u.email}}</td>
+                <td id="pName">{{u.fullName}}</td>
+                <td id="pAdress">{{u.address}}</td>
+                <td id="pPhoneNumber">{{u.phonenumber}}</td>
+                <td>
+                    <i class="bi bi-pencil" (click)="edit(u)"></i>
+                    <i class="bi bi-trash ms-2" (click)="delete(u._id)"></i>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
