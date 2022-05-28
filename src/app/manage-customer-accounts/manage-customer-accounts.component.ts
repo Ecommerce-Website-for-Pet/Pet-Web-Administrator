@@ -37,6 +37,11 @@ export class ManageCustomerAccountsComponent implements OnInit {
     console.log(data);
     this.user=data;
   }
+  onReset(form?:NgForm){
+    if(form)
+      form.reset();
+    this.user=new User();
+  }
 
   delete(id:any){
     if(confirm("Are you sure you want to delete this products?")==true){
@@ -44,6 +49,7 @@ export class ManageCustomerAccountsComponent implements OnInit {
         let resData=JSON.parse(JSON.stringify(res));
         if(resData.message==="Success"){
           this._toast.warning("Deleted successfully!","Delete");
+          // this.onReset(form);
           this.getUsers();
         }else{
           alert(resData.message);
