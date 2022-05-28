@@ -31,7 +31,7 @@ updateUser(id: any, data: any): Observable<any>{
   return this._http.patch(`${baseUrl}/${id}`,data)
 }
 deleteUser(id: any): Observable<any>{
-  return this._http.delete(`${baseUrl}/${id}`)
+  return this._http.delete(`${baseUrl}/users/${id}`)
 }
 
 handleError(error: HttpErrorResponse){
