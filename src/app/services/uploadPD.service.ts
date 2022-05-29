@@ -54,7 +54,7 @@ export class UploadPDService {
   // updateProduct(id:any,data:any):Observable<any>{
   //   return this._http.patch(`${url_api}/${id}`,data);
   // }
-  // deleteProduct(id:any):Observable<any>{
-  //   return this._http.delete(`${url_api}/${id}`);
-  // }
+  deleteProduct(id:any):Observable<any>{
+    return this._http.delete(`${url_api}/${id}`);
+  }
 }

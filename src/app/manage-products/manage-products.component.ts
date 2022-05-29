@@ -106,6 +106,7 @@ onSubmit(data:any){
 	formData.append("name",data.name);
 
   formData.append("file", this.file)
+
   formData.append("category",data.category);
 	console.log("FormData:",formData);
 	// for(let pair of formData.entries()){
@@ -124,7 +125,26 @@ onSubmit(data:any){
 		}
 	})
 
-
+}
+onReset(form?:NgForm){
+  if(form)
+    form.reset();
+  this.product=new Product();
+}
+delete(id:any){
+  if(confirm("Are you sure you want to delete this products?")==true){
+    this._service.deleteProduct(id).subscribe(res=>{
+      let resData=JSON.parse(JSON.stringify(res));
+     
+      if(resData.message==="Success"){
+        this._toast.warning("Deleted successfully!","Deleted");
+        this.getData();
+      }else{
+        alert(resData.message);
+      }
+    });
+  }
+  
 }
 get nameInput(){
 	return this.formUpload.controls['name'];
