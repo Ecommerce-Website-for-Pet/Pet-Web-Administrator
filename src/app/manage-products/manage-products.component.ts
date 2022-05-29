@@ -108,6 +108,15 @@ onSubmit(data:any){
      formData.append("file", this.file)
      formData.append("category",data.category);
      console.log("FormData:",formData);
+     this._service.uploadData(formData).subscribe({
+      next: res=>{
+        console.log(res);
+        this.getData();
+      },
+      error:err=>{
+        console.log(err.message);
+      }
+    })
   }else{
     this._service.updateProduct(this.product._id, this.product).subscribe(res => {
       let resData = JSON.parse(JSON.stringify(res));
@@ -127,15 +136,7 @@ onSubmit(data:any){
 	// }
 
 	//Send data to server
-	this._service.uploadData(formData).subscribe({
-		next: res=>{
-			console.log(res);
-      this.getData();
-		},
-		error:err=>{
-			console.log(err.message);
-		}
-	})
+	
 
 }
 onReset(form?:NgForm){
