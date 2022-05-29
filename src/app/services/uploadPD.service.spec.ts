@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UploadPDService } from './uploadPD';
+import { UploadPDService } from './uploadPD.service';
 
 describe('ExampleService', () => {
   let service: UploadPDService;

@@ -5,7 +5,7 @@ import { Product } from '../models/product';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { UploadPDService } from '../services/uploadPD';
+import { UploadPDService } from '../services/uploadPD.service';
 
 @Component({
   selector: 'app-manage-products',
@@ -105,11 +105,7 @@ onSubmit(data:any){
 	let formData=new FormData();
 	formData.append("name",data.name);
 
-
-	formData.append("file",this.file);
-
-
-
+  formData.append("file", this.file)
   formData.append("category",data.category);
 	console.log("FormData:",formData);
 	// for(let pair of formData.entries()){
