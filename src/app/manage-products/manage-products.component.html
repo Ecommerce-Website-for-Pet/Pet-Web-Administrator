@@ -43,7 +43,7 @@
     <div class="row">
         <div class="col-md-5">
             <div class="container-fluid">
-                <form #productForm="ngForm" (ngSubmit)="submitData(productForm)">
+                <form form [formGroup]="formUpload" (ngSubmit)="onSubmit(formUpload.value)">
 
                     <h4 class="text-center">Update Product Info</h4>
                     <input type="hidden" name="_id" 
@@ -52,12 +52,12 @@
                     <div class="mb-3">
                         <label for="name">Name: </label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter product name" 
-                        [(ngModel)]="product['name']">
+                       formControlName="name">
                     </div>
                     <div class="mb-3">
                         <label for="category">Category: </label>
                         <input type="text" class="form-control" id="category" name="category" placeholder="Enter category" 
-                        [(ngModel)]="product['category']">
+                        formControlName="category">
                     </div>
                     <div class="mb-3">
                         <label for="label">Label: </label>
@@ -70,7 +70,7 @@
                         [(ngModel)]="product['image']"> -->
                     </div>
                     <div class="mb-3">
-                        <input type="file" class="form-control" (change)="onChange($event)">
+                        <input type="file"  class="form-control" (change)="onChange($event)">
                     </div>
                     <div class="mb-3">
                         <label for="weight">Weight: </label>
@@ -103,7 +103,7 @@
                     </div>
 
                     <div class="mb-3 text-end">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" >Submit</button>
                         <button type="reset" class="btn btn-secondary ms-1">Reset</button>
                     </div>
 
@@ -136,7 +136,7 @@
                         <!-- <td>{{p.category}}</td>
                         <td>{{p.label}}</td> -->
                         <!-- <td>{{p.image}}</td> -->
-                        <td><img style="height:50px; width:50px" src="http://localhost:3000/{{p.image}}"></td>
+                        <td><img style="height:50px; width:50px" src="{{url+p.image[0]}}"></td>
                         <!-- <td>{{p.weight}}</td>
                         <td>{{p.color}}</td>
                         <td>{{p.price}}</td>
@@ -146,8 +146,8 @@
                         <td>
                             <!-- <i class="bi bi-pencil">Edit</i> -->
                             <!-- <i class="bi bi-trash ms-2">Del</i> -->
-                            <i class="bi bi-pencil" (click)="edit(p)"></i>
-                            <i class="bi bi-trash ms-2" (click)="delete(p._id, productForm)"></i>
+                            <i class="bi bi-pencil" ></i>
+                            <i class="bi bi-trash ms-2" ></i>
                         </td>
                     </tr>
                 </tbody>
