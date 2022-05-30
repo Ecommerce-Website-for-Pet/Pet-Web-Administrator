@@ -103,28 +103,66 @@ export class ManageProductsComponent implements OnInit {
 onSubmit(data:any){
   console.log("Data:",data); 
 	let formData=new FormData();
-	formData.append("name",data.name);
+  if(this.product._id==''){
+     formData.append("name",data.name);
+     formData.append("file", this.file)
+     formData.append("category",data.category);
+     console.log("FormData:",formData);
+     this._service.uploadData(formData).subscribe({
+      next: res=>{
+        console.log(res);
+        this.getData();
+      },
+      error:err=>{
+        console.log(err.message);
+      }
+    })
+  }else{
+    this._service.updateProduct(this.product._id, this.product).subscribe(res => {
+      let resData = JSON.parse(JSON.stringify(res));
+      if(resData.message === "Success"){
+        this._toast.success("Updated successfully!","Updated");
+       this.onReset();
+       this.getData(); 
+      }else{
+        alert("Fail!");
+      }
+    })
+  }
 
-  formData.append("file", this.file)
-  formData.append("category",data.category);
-	console.log("FormData:",formData);
 	// for(let pair of formData.entries()){
 	// 	//cấu hình entries trong tsconfig.json
 	// 	console.log(pair[0],pair[1]);
 	// }
 
 	//Send data to server
-	this._service.uploadData(formData).subscribe({
-		next: res=>{
-			console.log(res);
-      this.getData();
-		},
-		error:err=>{
-			console.log(err.message);
-		}
-	})
+	
 
+}
+onReset(form?:NgForm){
+  if(form)
+    form.reset();
+  this.product=new Product();
+}
+delete(id:any){
+  if(confirm("Are you sure you want to delete this products?")==true){
+    this._service.deleteProduct(id).subscribe(res=>{
+      let resData=JSON.parse(JSON.stringify(res));
+     
+      if(resData.message==="Success"){
+        this._toast.warning("Deleted successfully!","Deleted");
+        this.getData();
+      }else{
+        alert(resData.message);
+      }
+    });
+  }
+  
+}
 
+edit(data:Product){
+  console.log(data);
+  this.product=data;
 }
 get nameInput(){
 	return this.formUpload.controls['name'];

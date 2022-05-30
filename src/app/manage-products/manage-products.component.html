@@ -44,7 +44,7 @@
         <div class="col-md-5">
             <div class="container-fluid">
                 <form form [formGroup]="formUpload" (ngSubmit)="onSubmit(formUpload.value)">
-
+                    <input type="hidden" class="form-control" [(ngModel)]="product['_id']" name="_id">
                     <h4 class="text-center">Update Product Info</h4>
                     <input type="hidden" name="_id" 
                         [(ngModel)]="product['_id']">
@@ -52,7 +52,7 @@
                     <div class="mb-3">
                         <label for="name">Name: </label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter product name" 
-                       formControlName="name">
+                       formControlName="name" [(ngModel)]="product['name']" name="name">
                     </div>
                     <div class="mb-3">
                         <label for="category">Category: </label>
@@ -146,8 +146,8 @@
                         <td>
                             <!-- <i class="bi bi-pencil">Edit</i> -->
                             <!-- <i class="bi bi-trash ms-2">Del</i> -->
-                            <i class="bi bi-pencil" ></i>
-                            <i class="bi bi-trash ms-2" ></i>
+                            <i class="bi bi-pencil" (click)="edit(p)" ></i>
+                            <i class="bi bi-trash ms-2" (click)="delete(p._id)" ></i>
                         </td>
                     </tr>
                 </tbody>
