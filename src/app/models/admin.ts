@@ -1,11 +1,17 @@
 export class Admin{
     _id:any;
-    name:string;
-    price:number;
+    email:string;
+    password:string;
+    fullName:string;
+    phonenumber:string;
+    address:string;
 
     constructor(){
-        this._id="";
-        this.name="";
-        this.price=0;
+        this._id ="";
+        this.email ="";
+        this.password ="12345678";
+        this.fullName ="";
+        this.phonenumber ="";
+        this.address ="";
     }
 }

@@ -1,4 +1,7 @@
 export interface IAdmin{
-    name: string
-    price: number
+    email:string;
+    password:string;
+    fullName:string;
+    phonenumber:string;
+    address:string;
 }
