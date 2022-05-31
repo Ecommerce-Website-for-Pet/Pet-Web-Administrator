@@ -37,7 +37,7 @@
         </div>
     </div>
 </form> -->
-<h2 class="text-center bg-dark text-light lh-lg">CRUD App Example</h2>
+<!-- <h2 class="text-center bg-dark text-light lh-lg">CRUD App Example</h2> -->
 
 <div class="container">
     <div class="row">
@@ -45,7 +45,7 @@
             <div class="container-fluid">
                 <form #adminForm="ngForm" (ngSubmit)="submitData(adminForm)">
 
-                    <h4 class="text-center">Update Product Info</h4>
+                    <h4 class="text-center">Update Admin Info</h4>
 
                     <input type="hidden" name="_id" 
                         [(ngModel)]="admin['_id']">
@@ -68,13 +68,13 @@
             </div>
         </div>
         <div class="col-md-7">
-            <h4 class="text-center">Product List</h4>
+            <h4 class="text-center">Admin List</h4>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Price</th>
+                        <th>Email</th>
+                        <th>Full name</th>
                         <th></th>
                     </tr>
                 </thead>
